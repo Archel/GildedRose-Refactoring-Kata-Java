@@ -10,4 +10,12 @@ public class GildedRoseShould {
         GildedRose gildedRose = new GildedRose(null);
         gildedRose.updateQuality();
     }
+
+    @Test
+    public void accept_an_empty_list_of_items() {
+        Item[] emptyItems = new Item[]{};
+        GildedRose gildedRose = new GildedRose(emptyItems);
+
+        gildedRose.updateQuality();
+    }
 }
