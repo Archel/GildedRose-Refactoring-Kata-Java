@@ -127,12 +127,23 @@ public class GildedRoseShould {
 
     @Test
     public void increase_by_two_the_quality_of_aged_brie_when_the_quality_is_below_fifty() {
-        Item item = new Item("Aged Brie", 0, 2);
+        Item item = new Item("Aged Brie", 0, -1);
         Item[] items = new Item[]{item};
         GildedRose gildedRose = new GildedRose(items);
 
         gildedRose.updateQuality();
 
-        assertEquals(4, gildedRose.items[0].quality);
+        assertEquals(1, gildedRose.items[0].quality);
+    }
+
+    @Test
+    public void not_change_the_quality_of_aged_brie_when_the_quality_is_above_fifty() {
+        Item item = new Item("Aged Brie", 0, 50);
+        Item[] items = new Item[]{item};
+        GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+
+        assertEquals(50, gildedRose.items[0].quality);
     }
 }
