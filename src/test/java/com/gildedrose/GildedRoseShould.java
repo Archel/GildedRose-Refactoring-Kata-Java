@@ -18,4 +18,12 @@ public class GildedRoseShould {
 
         gildedRose.updateQuality();
     }
+
+    @Test(expected = NullPointerException.class)
+    public void not_accept_list_with_undefined_item() {
+        Item[] emptyItems = new Item[]{null};
+        GildedRose gildedRose = new GildedRose(emptyItems);
+
+        gildedRose.updateQuality();
+    }
 }
