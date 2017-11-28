@@ -35,4 +35,15 @@ public class GildedRoseShould {
 
         gildedRose.updateQuality();
     }
+
+    @Test
+    public void not_changes_the_item_name_when_the_name_is_empty() {
+        Item item = new Item("", 0, 0);
+        Item[] items = new Item[]{item};
+        GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+
+        assertEquals("", gildedRose.items[0].name);
+    }
 }
