@@ -46,4 +46,15 @@ public class GildedRoseShould {
 
         assertEquals("", gildedRose.items[0].name);
     }
+
+    @Test
+    public void not_change_the_item_name() {
+        Item item = new Item("Bob", 0, 0);
+        Item[] items = new Item[]{item};
+        GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+
+        assertEquals("Bob", gildedRose.items[0].name);
+    }
 }
