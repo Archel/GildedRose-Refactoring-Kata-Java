@@ -26,4 +26,13 @@ public class GildedRoseShould {
 
         gildedRose.updateQuality();
     }
+
+    @Test(expected = NullPointerException.class)
+    public void not_accept_unnamed_items() {
+        Item item = new Item(null, 0, 0);
+        Item[] items = new Item[]{item};
+        GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+    }
 }
