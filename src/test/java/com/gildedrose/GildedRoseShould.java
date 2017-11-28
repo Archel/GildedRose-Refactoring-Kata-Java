@@ -104,7 +104,7 @@ public class GildedRoseShould {
     }
 
     @Test
-    public void sell_in_dont_change_for_sulfuras_hand_of_ragnaros() {
+    public void not_change_the_sell_in_for_sulfuras_hand_of_ragnaros() {
         Item item = new Item("Sulfuras, Hand of Ragnaros", 2, 0);
         Item[] items = new Item[]{item};
         GildedRose gildedRose = new GildedRose(items);
@@ -112,5 +112,27 @@ public class GildedRoseShould {
         gildedRose.updateQuality();
 
         assertEquals(2, gildedRose.items[0].sellIn);
+    }
+
+    @Test
+    public void not_change_the_quality_in_for_sulfuras_hand_of_ragnaros() {
+        Item item = new Item("Sulfuras, Hand of Ragnaros", 0, 54);
+        Item[] items = new Item[]{item};
+        GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+
+        assertEquals(54, gildedRose.items[0].quality);
+    }
+
+    @Test
+    public void increase_by_two_the_quality_of_aged_brie_when_the_quality_is_below_fifty() {
+        Item item = new Item("Aged Brie", 0, 2);
+        Item[] items = new Item[]{item};
+        GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+
+        assertEquals(4, gildedRose.items[0].quality);
     }
 }
