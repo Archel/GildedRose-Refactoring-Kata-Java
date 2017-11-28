@@ -91,4 +91,15 @@ public class GildedRoseShould {
 
         assertEquals(0, gildedRose.items[0].quality);
     }
+
+    @Test
+    public void decrease_sellIn_by_one_when_sellIn_is_zero() {
+        Item item = new Item("Bob", 0, 0);
+        Item[] items = new Item[]{item};
+        GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+
+        assertEquals(-1, gildedRose.items[0].sellIn);
+    }
 }
