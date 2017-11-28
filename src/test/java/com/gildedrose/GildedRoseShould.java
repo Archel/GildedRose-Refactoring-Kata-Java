@@ -80,4 +80,15 @@ public class GildedRoseShould {
 
         assertEquals(0, gildedRose.items[0].quality);
     }
+
+    @Test
+    public void decreases_a_quality_by_two_when_quality_is_over_one() {
+        Item item = new Item("Bob", 0, 2);
+        Item[] items = new Item[]{item};
+        GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+
+        assertEquals(0, gildedRose.items[0].quality);
+    }
 }
