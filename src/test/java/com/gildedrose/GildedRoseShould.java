@@ -1,5 +1,6 @@
 package com.gildedrose;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -56,5 +57,16 @@ public class GildedRoseShould {
         gildedRose.updateQuality();
 
         assertEquals("Bob", gildedRose.items[0].name);
+    }
+
+    @Test
+    public void not_change_the_quality_when_quality_is_zero() {
+        Item item = new Item("Bob", 0, 0);
+        Item[] items = new Item[]{item};
+        GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+
+        assertEquals(0, gildedRose.items[0].quality);
     }
 }
