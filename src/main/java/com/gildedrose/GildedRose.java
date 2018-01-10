@@ -11,30 +11,30 @@ class GildedRose {
         for (Item item : items) {
 
             if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                item.sellIn = item.sellIn - 1;
+                updateItemSellIn(item);
             }
 
             if (!item.name.equals("Aged Brie")
                     && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (item.quality > 0) {
                     if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                        item.quality = item.quality - 1;
+                        updateProductQuality(item, -1);
                     }
                 }
             } else {
                 if (item.quality < 50) {
-                    item.quality = item.quality + 1;
+                    updateProductQuality(item, 1);
 
                     if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (item.sellIn < 10) {
                             if (item.quality < 50) {
-                                item.quality = item.quality + 1;
+                                updateProductQuality(item, 1);
                             }
                         }
 
                         if (item.sellIn < 5) {
                             if (item.quality < 50) {
-                                item.quality = item.quality + 1;
+                                updateProductQuality(item, 1);
                             }
                         }
                     }
@@ -46,7 +46,7 @@ class GildedRose {
                     if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (item.quality > 0) {
                             if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                                item.quality = item.quality - 1;
+                                updateProductQuality(item, -1);
                             }
                         }
                     } else {
@@ -54,10 +54,18 @@ class GildedRose {
                     }
                 } else {
                     if (item.quality < 50) {
-                        item.quality = item.quality + 1;
+                        updateProductQuality(item, 1);
                     }
                 }
             }
         }
+    }
+
+    private void updateProductQuality(Item item, int i) {
+        item.quality = item.quality + i;
+    }
+
+    private void updateItemSellIn(Item item) {
+        item.sellIn = item.sellIn - 1;
     }
 }
