@@ -167,4 +167,28 @@ public class GildedRoseShould {
 
         assertEquals(33, gildedRose.items[0].quality);
     }
+
+    @Test
+    public void
+    don_t_increase_the_quality_of_aged_brie_over_the_maximum_quality_value() {
+        Item item = new Item("Aged Brie", 0, 49);
+        Item[] items = new Item[]{item};
+        GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+
+        assertEquals(50, gildedRose.items[0].quality);
+    }
+
+    @Test
+    public void
+    don_t_increase_the_quality_of_backstage_passes_over_the_maximum_quality_value() {
+        Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 3, 49);
+        Item[] items = new Item[]{item};
+        GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+
+        assertEquals(50, gildedRose.items[0].quality);
+    }
 }
