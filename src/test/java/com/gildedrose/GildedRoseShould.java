@@ -145,4 +145,26 @@ public class GildedRoseShould {
 
         assertEquals(50, gildedRose.items[0].quality);
     }
+
+    @Test
+    public void increase_the_quality_by_two_for_backstage_passes_when_sell_in_is_less_than_eleven_and_more_than_six() {
+        Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 10, 30);
+        Item[] items = new Item[]{item};
+        GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+
+        assertEquals(32, gildedRose.items[0].quality);
+    }
+
+    @Test
+    public void increase_the_quality_by_three_for_backstage_passes_when_sell_in_is_less_than_six() {
+        Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 30);
+        Item[] items = new Item[]{item};
+        GildedRose gildedRose = new GildedRose(items);
+
+        gildedRose.updateQuality();
+
+        assertEquals(33, gildedRose.items[0].quality);
+    }
 }
