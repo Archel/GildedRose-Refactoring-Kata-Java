@@ -4,14 +4,8 @@ import com.gildedrose.Item;
 
 public class BackstagePassesUpdater extends VanillaItemUpdater {
 
-    private static final int MAX_ITEM_QUALITY = 50;
-
-    public BackstagePassesUpdater(Item item) {
-        super(item);
-    }
-
     @Override
-    public void update() {
+    public void update(Item item) {
         updateItemSellIn(item);
         if (item.quality < MAX_ITEM_QUALITY) {
             increaseQuality(item);

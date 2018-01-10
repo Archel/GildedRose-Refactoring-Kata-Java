@@ -3,13 +3,12 @@ package com.gildedrose.services;
 import com.gildedrose.Item;
 
 public class VanillaItemUpdater {
-    protected Item item;
+    protected static final int MAX_ITEM_QUALITY = 50;
 
-    public VanillaItemUpdater(Item item) {
-        this.item = item;
+    public VanillaItemUpdater() {
     }
 
-    public void update() {
+    public void update(Item item) {
         updateItemSellIn(item);
         if (item.quality > 0) {
             decreaseQuality(item);
