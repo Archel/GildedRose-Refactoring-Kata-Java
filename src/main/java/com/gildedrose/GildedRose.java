@@ -18,23 +18,23 @@ class GildedRose {
                     && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (item.quality > 0) {
                     if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                        updateProductQuality(item, -1);
+                        decreaseQuality(item);
                     }
                 }
             } else {
                 if (item.quality < 50) {
-                    updateProductQuality(item, 1);
+                    increaseQuality(item);
 
                     if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (item.sellIn < 10) {
                             if (item.quality < 50) {
-                                updateProductQuality(item, 1);
+                                increaseQuality(item);
                             }
                         }
 
                         if (item.sellIn < 5) {
                             if (item.quality < 50) {
-                                updateProductQuality(item, 1);
+                                increaseQuality(item);
                             }
                         }
                     }
@@ -46,7 +46,7 @@ class GildedRose {
                     if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (item.quality > 0) {
                             if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                                updateProductQuality(item, -1);
+                                decreaseQuality(item);
                             }
                         }
                     } else {
@@ -54,11 +54,19 @@ class GildedRose {
                     }
                 } else {
                     if (item.quality < 50) {
-                        updateProductQuality(item, 1);
+                        increaseQuality(item);
                     }
                 }
             }
         }
+    }
+
+    private void decreaseQuality(Item item) {
+        updateProductQuality(item, -1);
+    }
+
+    private void increaseQuality(Item item) {
+        updateProductQuality(item, 1);
     }
 
     private void updateProductQuality(Item item, int i) {
