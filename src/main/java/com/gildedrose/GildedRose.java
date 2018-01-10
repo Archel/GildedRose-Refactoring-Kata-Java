@@ -50,7 +50,7 @@ class GildedRose {
                             }
                         }
                     } else {
-                        item.quality = item.quality - item.quality;
+                        item.quality = 0;
                     }
                 } else {
                     if (item.quality < 50) {
@@ -70,10 +70,10 @@ class GildedRose {
     }
 
     private void updateProductQuality(Item item, int i) {
-        item.quality = item.quality + i;
+        item.quality += i;
     }
 
     private void updateItemSellIn(Item item) {
-        item.sellIn = item.sellIn - 1;
+        item.sellIn -= 1;
     }
 }
