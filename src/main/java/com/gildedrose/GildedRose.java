@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import com.gildedrose.services.VanillaItemUpdater;
+
 class GildedRose {
     public static final int MAX_ITEM_QUALITY = 50;
     Item[] items;
@@ -43,22 +45,10 @@ class GildedRose {
                 case "Sulfuras, Hand of Ragnaros":
                     break;
                 default:
-                    updateItemSellIn(item);
-                    if (item.quality > 0) {
-                        decreaseQuality(item);
-                    }
-
-                    if (item.sellIn < 0 && item.quality > 0) {
-                        decreaseQuality(item);
-                    }
-
+                    new VanillaItemUpdater(item).invoke();
                     break;
             }
         }
-    }
-
-    private void decreaseQuality(Item item) {
-        updateProductQuality(item, -1);
     }
 
     private void increaseQuality(Item item) {
